@@ -1,4 +1,4 @@
-module github.com/loommii/captchaimage
+module github.com/loommii/captcha-image
 
 go 1.22.4
 
