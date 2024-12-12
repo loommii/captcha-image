@@ -17,7 +17,7 @@ import (
 var fontpath string
 
 func init() {
-	fontpath = os.Getenv("CAPTCHA_IMAGE_FONT_PARH") // 获取环境变量
+	fontpath = os.Getenv("CAPTCHA_IMAGE_FONT_PATH") // 获取环境变量
 	if fontpath == "" {
 		_, filename, _, _ := runtime.Caller(0)
 		fontpath = filepath.Dir(filename) + "/resource/HarmonyOS_Sans_SC_Medium.ttf" // 默认字体路径
