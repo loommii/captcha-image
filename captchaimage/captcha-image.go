@@ -14,6 +14,17 @@ import (
 	"golang.org/x/image/math/fixed"
 )
 
+var fontpath string
+
+func init() {
+	fontpath = os.Getenv("CAPTCHA_IMAGE_FONT_PARH") // 获取环境变量
+	if fontpath == "" {
+		_, filename, _, _ := runtime.Caller(0)
+		fontpath = filepath.Dir(filename) + "/resource/HarmonyOS_Sans_SC_Medium.ttf" // 默认字体路径
+	}
+
+}
+
 type CaptchaGenerator struct {
 	Width  int
 	Height int
@@ -22,11 +33,10 @@ type CaptchaGenerator struct {
 
 // 默认构造函数，返回一个CaptchaGenerator实例
 func NewCaptchaGenerator() *CaptchaGenerator {
-	_, filename, _, _ := runtime.Caller(0)
 	return &CaptchaGenerator{
 		Width:  150,
 		Height: 50,
-		Font:   filepath.Dir(filename) + "/resource/HarmonyOS_Sans_SC_Medium.ttf", // 默认字体路径
+		Font:   fontpath,
 	}
 }
 
