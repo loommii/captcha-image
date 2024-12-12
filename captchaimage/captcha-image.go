@@ -6,6 +6,8 @@ import (
 	"image/draw"
 	"math/rand"
 	"os"
+	"path/filepath"
+	"runtime"
 	"unicode/utf8"
 
 	"github.com/golang/freetype"
@@ -20,10 +22,11 @@ type CaptchaGenerator struct {
 
 // 默认构造函数，返回一个CaptchaGenerator实例
 func NewCaptchaGenerator() *CaptchaGenerator {
+	_, filename, _, _ := runtime.Caller(0)
 	return &CaptchaGenerator{
 		Width:  150,
 		Height: 50,
-		Font:   "resource/HarmonyOS_Sans_SC_Medium.ttf", // 默认字体路径
+		Font:   filepath.Dir(filename) + "/resource/HarmonyOS_Sans_SC_Medium.ttf", // 默认字体路径
 	}
 }
 
